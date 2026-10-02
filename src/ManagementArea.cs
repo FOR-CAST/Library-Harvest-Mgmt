@@ -357,13 +357,13 @@ namespace Landis.Library.HarvestManagement
                         //if there was a stand-adjacency constraint on this stand, enforce:
                         foreach (IRequirement r in selectedPrescription.Prescription.StandRankingMethod.Requirements) {
                             //look for stand-adacency constraint in list r ranking methods
-                            if (r.ToString() == "Landis.Harvest.StandAdjacency") {
+                            if (r is StandAdjacency) {
                                 StandAdjacency sa = (StandAdjacency) r;
                                 //set-aside every stand in this stand's neighbor-list for the specified number of years
                                 
                                 //IF siteselection = some type of spreading, freeze the spread-list of neighbors
-                                if (selectedPrescription.Prescription.SiteSelectionMethod.ToString() == "Landis.Harvest.CompleteStandSpreading"                                 
-                                    || selectedPrescription.Prescription.SiteSelectionMethod.ToString() == "Landis.Harvest.PartialStandSpreading") {
+                                if (selectedPrescription.Prescription.SiteSelectionMethod is CompleteStandSpreading
+                                    || selectedPrescription.Prescription.SiteSelectionMethod is PartialStandSpreading) {
                                     
                                     //freeze every stand in the neighbor list
                                     StandSpreading ss = (StandSpreading) selectedPrescription.Prescription.SiteSelectionMethod;
