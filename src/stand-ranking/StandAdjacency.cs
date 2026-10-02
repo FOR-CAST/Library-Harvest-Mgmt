@@ -39,8 +39,7 @@ namespace Landis.Library.HarvestManagement
         {
 			//Model.Core.UI.WriteLine("checking stand {0}", stand.MapCode);
 			//get list of neighboring stands (must cast from enum)
-			List<Stand> neighbor_stands = new List<Stand>();
-			neighbor_stands = (List<Stand>) stand.Neighbors;
+			List<Stand> neighbor_stands = new List<Stand>(stand.Neighbors);
 			//add ma_neighbors to this list as well, to check with all the neighboring stands that are in a different management area
 			foreach (Stand n_stand in stand.MaNeighbors) {
 				neighbor_stands.Add(n_stand);

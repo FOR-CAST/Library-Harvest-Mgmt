@@ -80,10 +80,11 @@ namespace Landis.Library.HarvestManagement
                     return rankings[i];
             }
             //throw new System.ApplicationException("ERROR: Stand not found in rankings");
-            //instead of throwing an exception, just return 0
-            rankings[0].Stand = stand;
-            rankings[0].Rank = 0;
-            return rankings[0];
+            //instead of throwing an exception, return a rank of 0 without overwriting rankings[0]
+            StandRanking notRanked;
+            notRanked.Stand = stand;
+            notRanked.Rank = 0;
+            return notRanked;
         }
 
         //---------------------------------------------------------------------
